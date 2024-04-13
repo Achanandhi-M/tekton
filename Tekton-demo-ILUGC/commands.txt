@@ -15,6 +15,14 @@ doctl kubernetes cluster delete my-tekton-cluster-demo #cmd to delete Digitaloce
 tkn hub install task git-clone  #cmd to install git-clone task in the tekton pipeline
 
 
+
+kubectl apply --filename \
+https://storage.googleapis.com/tekton-releases/dashboard/latest/release-full.yaml   # to install tekton dashboard
+
+kubectl port-forward -n tekton-pipelines service/tekton-dashboard 9097:9097  #for portForwarding 
+
+
+
 sudo docker login 
 
 cat ~/.docker/config.json | base64 -w0
