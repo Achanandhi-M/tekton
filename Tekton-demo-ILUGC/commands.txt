@@ -1,0 +1,20 @@
+doctl kubernetes cluster create my-tekton-cluster-demo --region blr1 --size s-2vcpu-4gb --count 3 #Command to install k8s cluster in Digital ocean
+kubectl apply --filename \
+https://storage.googleapis.com/tekton-releases/pipeline/latest/release.yaml  #To install Tekton pipeline in the cluster
+
+kubectl logs --selector=tekton.dev/taskRun=hello-task-run    #To check the logs of taskrun
+
+kubectl get taskrun hello-task-run  #To get the Taskrun 
+
+
+tkn pipelinerun logs  clone-build-push-run-4kgjr -f #To get pipeline logs using tkn cli
+
+
+doctl kubernetes cluster delete my-tekton-cluster-demo #cmd to delete Digitalocean k8s cluster
+
+tkn hub install task git-clone  #cmd to install git-clone task in the tekton pipeline
+
+
+sudo docker login 
+
+cat ~/.docker/config.json | base64 -w0
